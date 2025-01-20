@@ -6,16 +6,25 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import SkipToMain from "@/components/base/skip-to-main";
 import { AppSidebar } from "@/components/layout/app-sidebar";
 import Cookies from 'js-cookie'
+import Head from "next/head";
 
 export default function AdminPanelLayout({
+  title,
   children,
+  description,
 }: {
-  children: React.ReactNode;
+  title: string,
+  children: React.ReactNode,
+  description: string
 }) {
   const defaultOpen = Cookies.get('sidebar:state') !== 'false'
 
   return (
     <>
+      <Head>
+        <meta name="description" content={description} />
+        <title>{title}</title>
+      </Head>
       <SearchProvider>
         <SidebarProvider defaultOpen={defaultOpen}>
           <SkipToMain />
