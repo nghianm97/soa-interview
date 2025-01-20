@@ -4,31 +4,22 @@ import { cn } from '@/lib/utils'
 import { SearchProvider } from '@/context/search-context'
 import { SidebarProvider } from '@/components/ui/sidebar'
 import SkipToMain from '@/components/base/skip-to-main'
-import { AppSidebar } from '@/components/layout/app-sidebar'
 import Cookies from 'js-cookie'
-import Head from 'next/head'
+import { CoursesSidebar } from '@/components/layout/courses-sidebar'
 
 export default function AdminPanelLayout({
-  title,
-  children,
-  description
+  children
 }: {
-  title: string
   children: React.ReactNode
-  description: string
 }) {
   const defaultOpen = Cookies.get('sidebar:state') !== 'false'
 
   return (
     <>
-      <Head>
-        <meta name="description" content={description} />
-        <title>{title}</title>
-      </Head>
       <SearchProvider>
         <SidebarProvider defaultOpen={defaultOpen}>
           <SkipToMain />
-          <AppSidebar />
+          <CoursesSidebar />
           <div
             id="content"
             className={cn(

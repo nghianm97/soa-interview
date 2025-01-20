@@ -18,32 +18,77 @@ import {
   IconUserCog,
   IconUserOff,
   IconUsers,
+  IconWorldLongitude,
+  IconBooks,
+  IconAtom,
+  IconSchool,
+  IconFileAnalytics
 } from '@tabler/icons-react'
 import { AudioWaveform, Command, GalleryVerticalEnd } from 'lucide-react'
 import { type SidebarData } from '../types'
+
+export const sidebarCourese: SidebarData = {
+  navGroups: [
+    {
+      title: '',
+      items: [
+        {
+          title: 'Khám phá',
+          url: '/',
+          icon: IconWorldLongitude
+        },
+        {
+          title: 'Thư viện',
+          url: '/',
+          icon: IconBooks
+        },
+        {
+          title: 'Bộ sưu tập',
+          url: '/',
+          icon: IconAtom
+        },
+        {
+          title: 'Lớp',
+          url: '/',
+          icon: IconSchool
+        },
+        {
+          title: 'Báo cáo',
+          url: '/',
+          icon: IconFileAnalytics
+        },
+        {
+          title: 'Cài đài',
+          url: '/',
+          icon: IconSettings
+        }
+      ]
+    }
+  ]
+}
 
 export const sidebarData: SidebarData = {
   user: {
     name: 'satnaing',
     email: 'satnaingdev@gmail.com',
-    avatar: '/avatars/shadcn.jpg',
+    avatar: '/avatars/shadcn.jpg'
   },
   teams: [
     {
       name: 'Shadcn Admin',
       logo: Command,
-      plan: 'Vite + ShadcnUI',
+      plan: 'Vite + ShadcnUI'
     },
     {
       name: 'Acme Inc',
       logo: GalleryVerticalEnd,
-      plan: 'Enterprise',
+      plan: 'Enterprise'
     },
     {
       name: 'Acme Corp.',
       logo: AudioWaveform,
-      plan: 'Startup',
-    },
+      plan: 'Startup'
+    }
   ],
   navGroups: [
     {
@@ -52,30 +97,30 @@ export const sidebarData: SidebarData = {
         {
           title: 'Dashboard',
           url: '/dashboard',
-          icon: IconLayoutDashboard,
+          icon: IconLayoutDashboard
         },
         {
           title: 'Tasks',
           url: '/tasks',
-          icon: IconChecklist,
+          icon: IconChecklist
         },
         {
           title: 'Apps',
           url: '/apps',
-          icon: IconPackages,
+          icon: IconPackages
         },
         {
           title: 'Chats',
           url: '/chats',
           badge: '3',
-          icon: IconMessages,
+          icon: IconMessages
         },
         {
           title: 'Users',
           url: '/users',
-          icon: IconUsers,
-        },
-      ],
+          icon: IconUsers
+        }
+      ]
     },
     {
       title: 'Pages',
@@ -86,25 +131,25 @@ export const sidebarData: SidebarData = {
           items: [
             {
               title: 'Sign In',
-              url: '/sign-in',
+              url: '/sign-in'
             },
             {
               title: 'Sign In (2 Col)',
-              url: '/sign-in-2',
+              url: '/sign-in-2'
             },
             {
               title: 'Sign Up',
-              url: '/sign-up',
+              url: '/sign-up'
             },
             {
               title: 'Forgot Password',
-              url: '/forgot-password',
+              url: '/forgot-password'
             },
             {
               title: 'OTP',
-              url: '/otp',
-            },
-          ],
+              url: '/otp'
+            }
+          ]
         },
         {
           title: 'Errors',
@@ -113,31 +158,31 @@ export const sidebarData: SidebarData = {
             {
               title: 'Unauthorized',
               url: '/401',
-              icon: IconLock,
+              icon: IconLock
             },
             {
               title: 'Forbidden',
               url: '/403',
-              icon: IconUserOff,
+              icon: IconUserOff
             },
             {
               title: 'Not Found',
               url: '/404',
-              icon: IconError404,
+              icon: IconError404
             },
             {
               title: 'Internal Server Error',
               url: '/500',
-              icon: IconServerOff,
+              icon: IconServerOff
             },
             {
               title: 'Maintenance Error',
               url: '/503',
-              icon: IconBarrierBlock,
-            },
-          ],
-        },
-      ],
+              icon: IconBarrierBlock
+            }
+          ]
+        }
+      ]
     },
     {
       title: 'Other',
@@ -149,36 +194,36 @@ export const sidebarData: SidebarData = {
             {
               title: 'Profile',
               url: '/settings/profile',
-              icon: IconUserCog,
+              icon: IconUserCog
             },
             {
               title: 'Account',
               url: '/settings/account',
-              icon: IconTool,
+              icon: IconTool
             },
             {
               title: 'Appearance',
               url: '/settings/appearance',
-              icon: IconPalette,
+              icon: IconPalette
             },
             {
               title: 'Notifications',
               url: '/settings/notifications',
-              icon: IconNotification,
+              icon: IconNotification
             },
             {
               title: 'Display',
               url: '/settings/display',
-              icon: IconBrowserCheck,
-            },
-          ],
+              icon: IconBrowserCheck
+            }
+          ]
         },
         {
           title: 'Help Center',
           url: '/help-center',
-          icon: IconHelp,
-        },
-      ],
-    },
-  ],
+          icon: IconHelp
+        }
+      ]
+    }
+  ]
 }
