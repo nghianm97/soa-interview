@@ -18,9 +18,54 @@ import {
   IconUserCog,
   IconUserOff,
   IconUsers,
+  IconWorldLongitude,
+  IconBooks,
+  IconAtom,
+  IconSchool,
+  IconFileAnalytics,
 } from '@tabler/icons-react'
 import { AudioWaveform, Command, GalleryVerticalEnd } from 'lucide-react'
 import { type SidebarData } from '../types'
+
+export const sidebarCourese: SidebarData = {
+  navGroups: [
+    {
+      title: '',
+      items: [
+        {
+          title: 'Khám phá',
+          url: '/',
+          icon: IconWorldLongitude,
+        },
+        {
+          title: 'Thư viện',
+          url: '/',
+          icon: IconBooks,
+        },
+        {
+          title: 'Bộ sưu tập',
+          url: '/',
+          icon: IconAtom,
+        },
+        {
+          title: 'Lớp',
+          url: '/',
+          icon: IconSchool,
+        },
+        {
+          title: 'Báo cáo',
+          url: '/',
+          icon: IconFileAnalytics,
+        },
+        {
+          title: 'Cài đài',
+          url: '/',
+          icon: IconSettings,
+        },
+      ],
+    },
+  ]
+}
 
 export const sidebarData: SidebarData = {
   user: {
