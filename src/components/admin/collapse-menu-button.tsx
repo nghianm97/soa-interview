@@ -54,7 +54,6 @@ export function CollapseMenuButton({
     submenu.active === undefined ? submenu.href === pathname : submenu.active
   )
   const [isCollapsed, setIsCollapsed] = useState<boolean>(isSubmenuActive)
-  console.log('123')
 
   return isOpen ? (
     <Collapsible
