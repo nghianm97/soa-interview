@@ -1,59 +1,59 @@
-"use client";
+'use client'
 
-import Link from "next/link";
-import { useState } from "react";
-import { ChevronDown, Dot } from "lucide-react";
-import Image from "next/image";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { DropdownMenuArrow } from "@radix-ui/react-dropdown-menu";
+import Link from 'next/link'
+import { useState } from 'react'
+import { ChevronDown, Dot } from 'lucide-react'
+import Image from 'next/image'
+import { cn } from '@/lib/utils'
+import { Button } from '@/components/ui/button'
+import { DropdownMenuArrow } from '@radix-ui/react-dropdown-menu'
 import {
   Collapsible,
   CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+  CollapsibleTrigger
+} from '@/components/ui/collapsible'
 import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
-  TooltipProvider,
-} from "@/components/ui/tooltip";
+  TooltipProvider
+} from '@/components/ui/tooltip'
 import {
   DropdownMenu,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
   DropdownMenuContent,
-  DropdownMenuSeparator,
-} from "@/components/ui/dropdown-menu";
-import { usePathname } from "next/navigation";
-import { ReactIcon } from "@/types/auth/icon";
+  DropdownMenuSeparator
+} from '@/components/ui/dropdown-menu'
+import { usePathname } from 'next/navigation'
+import { ReactIcon } from '@/types/auth/icon'
 
 type Submenu = {
-  href: string;
-  label: string;
-  active?: boolean;
-};
+  href: string
+  label: string
+  active?: boolean
+}
 
 interface CollapseMenuButtonProps {
-  icon: ReactIcon;
-  label: string;
-  active: boolean;
-  submenus: Submenu[];
-  isOpen: boolean | undefined;
+  icon: ReactIcon
+  label: string
+  active: boolean
+  submenus: Submenu[]
+  isOpen: boolean | undefined
 }
 
 export function CollapseMenuButton({
   icon: Icon,
   label,
   submenus,
-  isOpen,
+  isOpen
 }: CollapseMenuButtonProps) {
-  const pathname = usePathname();
+  const pathname = usePathname()
   const isSubmenuActive = submenus.some((submenu) =>
-    submenu.active === undefined ? submenu.href === pathname : submenu.active,
-  );
-  const [isCollapsed, setIsCollapsed] = useState<boolean>(isSubmenuActive);
+    submenu.active === undefined ? submenu.href === pathname : submenu.active
+  )
+  const [isCollapsed, setIsCollapsed] = useState<boolean>(isSubmenuActive)
 
   return isOpen ? (
     <Collapsible
@@ -65,15 +65,13 @@ export function CollapseMenuButton({
         className="[&[data-state=open]>div>div>svg]:rotate-180 mb-1"
         asChild
       >
-        <Button
-          className="w-full justify-start h-10 font-normal"
-        >
+        <Button className="w-full justify-start h-10 font-normal">
           <div className="w-full items-center flex justify-between">
             <div className="flex items-center">
               <span className="mr-4">
-                {label === "Biểu mẫu google" ? (
+                {label === 'Biểu mẫu google' ? (
                   <Image src="/admin/word.svg" alt="" width={20} height={20} />
-                ) : label === "Bảng tính" ? (
+                ) : label === 'Bảng tính' ? (
                   <Image src="/admin/Excel.svg" alt="" width={20} height={20} />
                 ) : (
                   <Icon size={18} />
@@ -81,10 +79,10 @@ export function CollapseMenuButton({
               </span>
               <p
                 className={cn(
-                  "max-w-[150px] truncate",
+                  'max-w-[150px] truncate',
                   isOpen
-                    ? "translate-x-0 opacity-100"
-                    : "-translate-x-96 opacity-0",
+                    ? 'translate-x-0 opacity-100'
+                    : '-translate-x-96 opacity-0'
                 )}
               >
                 {label}
@@ -92,10 +90,10 @@ export function CollapseMenuButton({
             </div>
             <div
               className={cn(
-                "whitespace-nowrap",
+                'whitespace-nowrap',
                 isOpen
-                  ? "translate-x-0 opacity-100"
-                  : "-translate-x-96 opacity-0",
+                  ? 'translate-x-0 opacity-100'
+                  : '-translate-x-96 opacity-0'
               )}
             >
               <ChevronDown
@@ -112,8 +110,8 @@ export function CollapseMenuButton({
             key={index}
             variant={
               (active === undefined && pathname === href) || active
-                ? "secondary"
-                : "ghost"
+                ? 'secondary'
+                : 'ghost'
             }
             className="w-full justify-start h-10 mb-1"
             asChild
@@ -124,10 +122,10 @@ export function CollapseMenuButton({
               </span>
               <p
                 className={cn(
-                  "max-w-[170px] truncate",
+                  'max-w-[170px] truncate',
                   isOpen
-                    ? "translate-x-0 opacity-100"
-                    : "-translate-x-96 opacity-0",
+                    ? 'translate-x-0 opacity-100'
+                    : '-translate-x-96 opacity-0'
                 )}
               >
                 {label}
@@ -144,18 +142,18 @@ export function CollapseMenuButton({
           <TooltipTrigger asChild>
             <DropdownMenuTrigger asChild>
               <Button
-                variant={isSubmenuActive ? "secondary" : "ghost"}
+                variant={isSubmenuActive ? 'secondary' : 'ghost'}
                 className="w-full justify-start h-10 mb-1"
               >
                 <div className="w-full items-center flex justify-between">
                   <div className="flex items-center">
-                    <span className={cn(isOpen === false ? "" : "mr-4")}>
+                    <span className={cn(isOpen === false ? '' : 'mr-4')}>
                       <Icon size={18} />
                     </span>
                     <p
                       className={cn(
-                        "max-w-[200px] truncate",
-                        isOpen === false ? "opacity-0" : "opacity-100",
+                        'max-w-[200px] truncate',
+                        isOpen === false ? 'opacity-0' : 'opacity-100'
                       )}
                     >
                       {label}
@@ -180,7 +178,7 @@ export function CollapseMenuButton({
             <Link
               className={`cursor-pointer ${
                 ((active === undefined && pathname === href) || active) &&
-                "bg-secondary"
+                'bg-secondary'
               }`}
               href={href}
             >
@@ -191,5 +189,5 @@ export function CollapseMenuButton({
         <DropdownMenuArrow className="fill-border" />
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }

@@ -1,27 +1,36 @@
-"use client";
+'use client'
 
-import { cn } from "@/lib/utils";
-import { SearchProvider } from "@/context/search-context";
-import { SidebarProvider } from "@/components/ui/sidebar";
-import SkipToMain from "@/components/base/skip-to-main";
-import { AppSidebar } from "@/components/layout/app-sidebar";
+import { cn } from '@/lib/utils'
+import { SearchProvider } from '@/context/search-context'
+import { SidebarProvider } from '@/components/ui/sidebar'
+import SkipToMain from '@/components/base/skip-to-main'
+import { AppSidebar } from '@/components/layout/app-sidebar'
 import Cookies from 'js-cookie'
+import Head from 'next/head'
 
 export default function AdminPanelLayout({
+  title,
   children,
+  description
 }: {
-  children: React.ReactNode;
+  title: string
+  children: React.ReactNode
+  description: string
 }) {
   const defaultOpen = Cookies.get('sidebar:state') !== 'false'
 
   return (
     <>
+      <Head>
+        <meta name="description" content={description} />
+        <title>{title}</title>
+      </Head>
       <SearchProvider>
         <SidebarProvider defaultOpen={defaultOpen}>
           <SkipToMain />
           <AppSidebar />
           <div
-            id='content'
+            id="content"
             className={cn(
               'max-w-full w-full ml-auto',
               'peer-data-[state=collapsed]:w-[calc(100%-var(--sidebar-width-icon)-1rem)]',
@@ -37,5 +46,5 @@ export default function AdminPanelLayout({
         </SidebarProvider>
       </SearchProvider>
     </>
-  );
+  )
 }

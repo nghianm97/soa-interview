@@ -1,42 +1,20 @@
-import { Header } from '@/components/layout/header'
-import { Main } from '@/components/layout/main'
-import { ProfileDropdown } from '@/components/base/profile-dropdown'
-import { Search } from '@/components/base/search'
-import { ThemeSwitch } from '@/components/base/theme-switch'
-import { columns } from '@/components/base/tasks/columns'
-import { DataTable } from '@/components/base/tasks/data-table'
-import { TasksDialogs } from '@/components/base/tasks/tasks-dialogs'
-import { TasksPrimaryButtons } from '@/components/base/tasks/tasks-primary-buttons'
-import TasksProvider from '@/context/tasks-context'
-import { tasksMock } from '@/mock-data/tasks'
+'use client'
 
-export default function Tasks() {
+import LoadingPage from '@/components/loading/loading-page'
+import dynamic from 'next/dynamic'
+
+const TasksPage = dynamic(
+  () => import('../../../components/lazyload/admin/tasks'),
+  {
+    loading: () => <LoadingPage className="" />,
+    ssr: false
+  }
+)
+
+export default function Dashboard() {
   return (
-    <TasksProvider> 1213
-      <Header fixed>
-        <Search />
-        <div className='ml-auto flex items-center space-x-4'>
-          <ThemeSwitch />
-          <ProfileDropdown />
-        </div>
-      </Header>
-
-      <Main>
-        <div className='mb-2 flex items-center justify-between space-y-2 flex-wrap gap-x-4'>
-          <div>
-            <h2 className='text-2xl font-bold tracking-tight'>Tasks</h2>
-            <p className='text-muted-foreground'>
-              Here&apos;s a list of your tasks for this month!
-            </p>
-          </div>
-          <TasksPrimaryButtons />
-        </div>
-        <div className='-mx-4 flex-1 overflow-auto px-4 py-1 lg:flex-row lg:space-x-12 lg:space-y-0'>
-          <DataTable data={tasksMock} columns={columns} />
-        </div>
-      </Main>
-
-      <TasksDialogs />
-    </TasksProvider>
+    <>
+      <TasksPage />
+    </>
   )
 }
