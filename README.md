@@ -2,13 +2,9 @@
 
 ## Getting Started
 
-- Run npm npm install first ( or yarn install or pnpm i)
+- Run pnpm first (install in https://pnpm.io/installation)
 
 ```bash
-npm install
-# or
-yarn install
-# or
 pnpm install
 ```
 
@@ -20,13 +16,7 @@ pnpm install
 Run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm run dev
 ```
 
 ## Results Achieved
