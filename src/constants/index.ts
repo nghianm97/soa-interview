@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next'
 
 export const CHARACTER_AVATARS: Record<string, string> = {
   Doreamon: '/characters/doraemon.png',
@@ -260,5 +260,4 @@ export const metadata: Metadata = {
     ]
   }
 }
-export const MOBILE_BREAKPOINT = 768;
-
+export const MOBILE_BREAKPOINT = 768

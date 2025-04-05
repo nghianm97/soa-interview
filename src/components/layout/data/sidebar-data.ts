@@ -27,7 +27,7 @@ import {
 import { AudioWaveform, Command, GalleryVerticalEnd } from 'lucide-react'
 import { type SidebarData } from '../types'
 
-export const sidebarCourese: SidebarData = {
+export const sidebarCourse: SidebarData = {
   navGroups: [
     {
       title: '',
@@ -58,7 +58,7 @@ export const sidebarCourese: SidebarData = {
           icon: IconFileAnalytics
         },
         {
-          title: 'Cài đài',
+          title: 'Cài đặt',
           url: '/',
           icon: IconSettings
         }

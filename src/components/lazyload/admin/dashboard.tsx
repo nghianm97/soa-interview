@@ -18,15 +18,10 @@ import { ThemeSwitch } from '@/components/base/theme-switch'
 import { Overview } from '@/components/base/overview'
 import { RecentSales } from '@/components/base/recent-sales'
 import { topNav } from '@/mock-data/data'
-import Head from 'next/head'
 
 export default function DashboardLazyAdmin() {
   return (
     <div>
-      <Head>
-        <title>Về Chúng Tôi</title>
-        <meta name="description" content="Tìm hiểu thêm về chúng tôi." />
-      </Head>
       <Header>
         <TopNav links={topNav} />
         <div className="ml-auto flex items-center space-x-4">

@@ -1,44 +1,4 @@
 {
-    "pages": {
-        "login": {
-            "title": "Sign in to your account",
-            "signin": "Sign in",
-            "signup": "Sign up",
-            "divider": "or",
-            "fields": {
-                "email": "Email",
-                "password": "Password"
-            },
-            "errors": {
-                "validEmail": "Invalid email address"
-            },
-            "buttons": {
-                "submit": "Login",
-                "forgotPassword": "Forgot password?",
-                "noAccount": "Don’t have an account?",
-                "rememberMe": "Remember me"
-            }
-        },
-        "forgotPassword": {
-            "title": "Forgot your password?",
-            "fields": {
-                "email": "Email"
-            },
-            "errors": {
-                "validEmail": "Invalid email address"
-            },
-            "buttons": {
-                "submit": "Send reset instructions"
-            }
-        }
-    },
-    "errors": {
-        "required": {
-            "field": "'{{ field }}' is required",
-            "common": "This field is required",
-            "min": "This field must be at least {{ min }} characters",
-            "max": "This field must be at most {{ max }} characters",
-            "invalidMail": "This field must be a valid email address"
-        }
-    }
+    "logo_sample": "LOGO SAMPLE",
+    "change_message_success": "Language Change Successful"
 }

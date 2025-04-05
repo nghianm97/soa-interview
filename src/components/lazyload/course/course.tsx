@@ -7,16 +7,22 @@ import { PlusIcon } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { IconSearch } from '@tabler/icons-react'
 import Image from 'next/image'
+import { ThemeSwitch } from '@/components/base/theme-switch'
+// import { Search } from '@/components/base/search'
+import { ProfileDropdown } from '@/components/base/profile-dropdown'
 
 export default function Courses() {
   return (
     <>
       {/* ===== Top Heading ===== */}
       <Header>
-        <div className="ml-auto flex items-center space-x-4">
-          <Button>
+        {/* <Search /> */}
+        <div className="ml-auto flex items-center gap-4">
+          <Button className="bg-buttonPrimary">
             <PlusIcon /> Tạo học hiệu
           </Button>
+          <ThemeSwitch />
+          <ProfileDropdown />
         </div>
       </Header>
       {/* ===== Main ===== */}

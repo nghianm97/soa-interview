@@ -5,7 +5,7 @@ import {
   SidebarRail
 } from '@/components/ui/sidebar'
 import { NavGroup } from '@/components/layout/nav-group'
-import { sidebarCourese } from './data/sidebar-data'
+import { sidebarCourse } from './data/sidebar-data'
 import Image from 'next/image'
 
 export function CoursesSidebar({
@@ -17,7 +17,7 @@ export function CoursesSidebar({
         <Image alt="" src={'/gkebook-logo.png'} width={60} height={30} />
       </SidebarHeader>
       <SidebarContent>
-        {sidebarCourese.navGroups?.map((props) => (
+        {sidebarCourse.navGroups?.map((props) => (
           <NavGroup key={props.title} {...props} />
         ))}
       </SidebarContent>
