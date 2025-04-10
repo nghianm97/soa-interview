@@ -5,21 +5,31 @@ import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { useResponsive } from '@/hooks/use-responsive'
 
-interface CardProps {
-  imageSrc: string
-  title: string
-  subtitle: string
+type IProperties = {
+  category: string
+  cta: string
   description: string
-  forfaitNumber: number
+  tagline: string
+  imageSrc: string
+}
+
+type IProps = {
+  cases?: IProperties[]
+  subtitle?: string
+  title?: string
+}
+
+type IData = {
+  data: IProps
 }
 
 const Card = ({
   imageSrc,
-  title,
-  subtitle,
+  category,
+  cta,
   description,
-  forfaitNumber
-}: CardProps) => {
+  tagline
+}: IProperties) => {
   const { isMobile, isTabletHorizontal, isDesktop } = useResponsive()
   const [isHovered, setIsHovered] = useState(false)
 
@@ -39,7 +49,7 @@ const Card = ({
       >
         <Image
           src={imageSrc || '/placeholder.svg'}
-          alt={title}
+          alt={category}
           fill
           className="object-cover"
         />
@@ -56,9 +66,9 @@ const Card = ({
         }}
       >
         <span className="text-secondaryButton text-[18px] font-medium mb-1">
-          {title}
+          {category}
         </span>
-        <h3 className="text-mainColor text-2xl font-medium mb-2">{subtitle}</h3>
+        <h3 className="text-mainColor text-2xl font-medium mb-2">{cta}</h3>
         <p className="text-[18px] text-sm mb-4 line-clamp-2">{description}</p>
 
         <motion.button
@@ -66,7 +76,7 @@ const Card = ({
           whileHover={{ backgroundColor: 'rgba(255, 99, 71, 0.05)' }}
           whileTap={{ scale: 0.98 }}
         >
-          Forfait {forfaitNumber}{' '}
+          {tagline}
           <Image
             src="/assets/ArrowUpRight.svg"
             width={20}
@@ -80,7 +90,8 @@ const Card = ({
   )
 }
 
-export default function SectionTwo() {
+export default function SectionTwo(props: IData) {
+  const { cases, subtitle, title } = props.data
   const { isMobile, isTabletHorizontal, isDesktop } = useResponsive()
   const cardsContainerRef = useRef<HTMLDivElement>(null)
   const [lineWidth, setLineWidth] = useState(0)
@@ -101,32 +112,32 @@ export default function SectionTwo() {
     return () => window.removeEventListener('resize', updateLineWidth)
   }, [])
 
-  const cards: CardProps[] = [
-    {
-      imageSrc: '/assets/section-21.svg',
-      title: 'Case Title',
-      subtitle: 'Case sous-titre',
-      description:
-        'Chaque sentier vous conduit à des panoramas époustouflants, chaque instant est une nouvelle découverte qui vous émerveillera.',
-      forfaitNumber: 1
-    },
-    {
-      imageSrc: '/assets/section-22.svg',
-      title: 'Case Title',
-      subtitle: 'Case sous-titre',
-      description:
-        "Chez BASIC, la pêche est une alliance entre passion et respect. Imaginez des lacs paisibles où le temps semble s'arrêter.",
-      forfaitNumber: 2
-    },
-    {
-      imageSrc: '/assets/section-23.svg',
-      title: 'Case Title',
-      subtitle: 'Case sous-titre',
-      description:
-        'BASIC vous guide à travers des territoires authentiques, où la chasse est une quête de connexion avec la nature sauvage.',
-      forfaitNumber: 3
-    }
-  ]
+  // const cards: IProperties[] = [
+  //   {
+  //     imageSrc: '/assets/section-21.svg',
+  //     category: 'Case Title',
+  //     cta: 'Case sous-titre',
+  //     description:
+  //       'Chaque sentier vous conduit à des panoramas époustouflants, chaque instant est une nouvelle découverte qui vous émerveillera.',
+  //     tagline: 1
+  //   },
+  //   {
+  //     imageSrc: '/assets/section-22.svg',
+  //     category: 'Case Title',
+  //     cta: 'Case sous-titre',
+  //     description:
+  //       "Chez BASIC, la pêche est une alliance entre passion et respect. Imaginez des lacs paisibles où le temps semble s'arrêter.",
+  //     tagline: 2
+  //   },
+  //   {
+  //     imageSrc: '/assets/section-23.svg',
+  //     category: 'Case Title',
+  //     cta: 'Case sous-titre',
+  //     description:
+  //       'BASIC vous guide à travers des territoires authentiques, où la chasse est une quête de connexion avec la nature sauvage.',
+  //     tagline: 3
+  //   }
+  // ]
 
   return (
     <section className="w-full py-20 px-4 md:px-8 lg:px-16 bg-white">
@@ -150,7 +161,7 @@ export default function SectionTwo() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              TITRE BLOC 1
+              {title}
             </motion.h2>
           </div>
 
@@ -160,7 +171,7 @@ export default function SectionTwo() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Sous-titre Bloc 1
+            {subtitle}
           </motion.p>
         </div>
 
@@ -171,16 +182,17 @@ export default function SectionTwo() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          {cards.map((card, index) => (
-            <Card
-              key={index}
-              imageSrc={card.imageSrc}
-              title={card.title}
-              subtitle={card.subtitle}
-              description={card.description}
-              forfaitNumber={card.forfaitNumber}
-            />
-          ))}
+          {cases &&
+            cases.map((card, index) => (
+              <Card
+                key={index}
+                imageSrc={`/assets/section-2${index + 1}.svg`}
+                category={card.category}
+                cta={card.cta}
+                description={card.description}
+                tagline={card.tagline}
+              />
+            ))}
         </motion.div>
       </div>
     </section>

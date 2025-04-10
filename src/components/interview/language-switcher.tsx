@@ -23,6 +23,7 @@ export function LanguageSwitcher() {
     await i18n.changeLanguage(newLanguage)
     toast.success(t('change_message_success', { lng: newLanguage }))
     setLanguage(newLanguage)
+    localStorage.setItem('i18nextLng', newLanguage)
     setIsOpen(false)
   }
 

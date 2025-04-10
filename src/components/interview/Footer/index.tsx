@@ -1,9 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from 'next/link'
 import Image from 'next/image'
 import { useResponsive } from '@/hooks/use-responsive'
 import { motion } from 'framer-motion'
 
-export function Footer() {
+type IFooterProps = {
+  data: any
+}
+
+export function Footer({ data }: IFooterProps) {
   const { isMobile, isDesktop } = useResponsive()
 
   const renderIcon = ['fb', 'ig', 'yt'].map((icon) => (
@@ -42,12 +47,13 @@ export function Footer() {
           <div
             className={`space-y-2 ${isMobile ? 'text-center' : 'text-left'} mb-6 md:mb-0`}
           >
-            <h2 className="font-medium">BASIC</h2>
-            <p className="text-sm">(514) 904-6789</p>
-            <p className="text-sm md:hidden">Quebec, 3100 Boulevard</p>
-            <p className="text-sm md:hidden">de la Côte-Vertu</p>
+            <h2 className="font-medium">{data?.footer?.address?.name}</h2>
+            <p className="text-sm">{data?.footer?.address?.phone}</p>
+            <p className="text-sm md:hidden">
+              {data?.footer?.address?.location}
+            </p>
             <p className="text-sm hidden md:block">
-              Quebec, 3100 Boulevard de la Côte-Vertu
+              {data?.footer?.address?.location}
             </p>
           </div>
 

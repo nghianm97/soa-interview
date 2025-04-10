@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 'use client'
 
 import { Footer } from '@/components/interview/Footer'
@@ -11,8 +13,10 @@ import { SectionSeven } from '@/components/interview/SectionSeven'
 import { SectionSix } from '@/components/interview/SectionSix'
 import { SectionThree } from '@/components/interview/SectionThree'
 import SectionTwo from '@/components/interview/SectionTwo'
+import { getMultiLanguage } from '@/services/interview'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 // Import Swiper styles
 import 'swiper/css'
@@ -21,14 +25,34 @@ import 'swiper/css/pagination'
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
+  const [data, setData] = useState<any>([])
+
+  const { i18n } = useTranslation()
+
+  const getDataMultiLanguage = async (lng: string) => {
+    await getMultiLanguage(lng).then((res) => {
+      setData(res.data[0])
+    })
+  }
 
   useEffect(() => {
-    // Simulate loading time
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 1000)
+    // Gọi API lần đầu
+    getDataMultiLanguage(i18n.language)
 
-    return () => clearTimeout(timer)
+    // Lắng nghe thay đổi ngôn ngữ
+    const onLanguageChanged = (lng: string) => {
+      getDataMultiLanguage(lng)
+    }
+
+    i18n.on('languageChanged', onLanguageChanged)
+
+    // Simulate loading
+    const timer = setTimeout(() => setIsLoading(false), 1000)
+
+    return () => {
+      i18n.off('languageChanged', onLanguageChanged)
+      clearTimeout(timer)
+    }
   }, [])
 
   return (
@@ -70,7 +94,7 @@ export default function Home() {
           </ScrollReveal>
 
           <ScrollReveal>
-            <SectionTwo />
+            <SectionTwo data={data?.bloc_1} />
           </ScrollReveal>
 
           <ScrollReveal>
@@ -96,7 +120,7 @@ export default function Home() {
           <ScrollReveal>
             <SectionEight />
           </ScrollReveal>
-          <Footer />
+          <Footer data={data} />
         </motion.main>
       )}
     </AnimatePresence>

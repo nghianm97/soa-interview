@@ -1,17 +1,13 @@
 import axios from 'axios'
 import { useAuthStore } from '../stores/stores'
 export const BASE_URL_V2 = process.env.NEXT_PUBLIC_API_PREFIX
-console.log('BASE_URL_V2', BASE_URL_V2)
-axios.defaults.withCredentials = true
+
 export const axiosConfig = axios.create({
   baseURL: BASE_URL_V2,
   timeout: 60000,
-  withCredentials: true,
+  // withCredentials: true,
   headers: {
-    'Content-Type': 'application/json',
-    ...(localStorage.getItem('schoolManagement')
-      ? { 'x-enterprise-uuid': localStorage.getItem('schoolManagement') }
-      : {})
+    'Content-Type': 'application/json'
   }
 })
 
@@ -20,10 +16,6 @@ axiosConfig.interceptors.request.use(
     const accessToken = useAuthStore.getState().accessToken
     if (!config.headers['Authorization'] || accessToken) {
       config.headers['Authorization'] = `Bearer ${accessToken}`
-    }
-    const enterpriseUuid = localStorage.getItem('schoolManagement')
-    if (enterpriseUuid) {
-      config.headers['x-enterprise-uuid'] = enterpriseUuid
     }
     return config
   },
